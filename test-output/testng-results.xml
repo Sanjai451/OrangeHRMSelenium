@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-03-11T23:33:08 IST" name="Default suite" finished-at="2026-03-11T23:33:22 IST" duration-ms="14299">
+    <groups>
+    </groups>
+    <test started-at="2026-03-11T23:33:08 IST" name="Default test" finished-at="2026-03-11T23:33:22 IST" duration-ms="14299">
+      <class name="buzz.BuzzTest">
+        <test-method signature="login()[pri:1, instance:buzz.BuzzTest@2b662a77]" started-at="2026-03-11T23:33:08 IST" name="login" finished-at="2026-03-11T23:33:15 IST" duration-ms="6883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="performAction()[pri:2, instance:buzz.BuzzTest@2b662a77]" started-at="2026-03-11T23:33:15 IST" name="performAction" finished-at="2026-03-11T23:33:22 IST" depends-on-methods="buzz.BuzzTest.login" duration-ms="7363" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performAction -->
+        <test-method signature="logOutOrangeHRM()[pri:10, instance:buzz.BuzzTest@2b662a77]" started-at="2026-03-11T23:33:22 IST" name="logOutOrangeHRM" finished-at="2026-03-11T23:33:22 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logOutOrangeHRM -->
+      </class> <!-- buzz.BuzzTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
