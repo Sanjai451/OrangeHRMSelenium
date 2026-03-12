@@ -1,4 +1,4 @@
-package pimModule;
+package com.orangehrm.seleniumui.pim_module;
 
 import java.time.Duration;
 import java.util.List;
@@ -14,7 +14,8 @@ import org.testng.annotations.Test;
 
 public class AddConfigurationTermination {
 	WebDriver driver = new EdgeDriver();
-
+	String terminationReasonName = "IronMan Reason";
+	
 	@Test(priority = 1)
 	public void login() {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -40,7 +41,7 @@ public class AddConfigurationTermination {
 		driver.findElement(By.xpath("//button[contains(., \"Add\")]")).click();
 		
 		//filling details
-		driver.findElement(By.xpath("//label/../..//input")).sendKeys("Spider Man");
+		driver.findElement(By.xpath("//label/../..//input")).sendKeys(terminationReasonName);
 		
 		// save
 		driver.findElement(By.xpath("//button[contains(., \"Save\")]")).click();
@@ -54,7 +55,7 @@ public class AddConfigurationTermination {
 		// explicit wait to be added
 		
 		// verify user
-		WebElement searchResult = driver.findElement(By.xpath("//div[contains(text(), \"Spider Man\")]"));
+		WebElement searchResult = driver.findElement(By.xpath("//div[contains(text(), \"" + terminationReasonName + "\")]"));
 		
 		System.out.println(searchResult.getText() + " : " + searchResult.getTagName());
 		

@@ -1,4 +1,4 @@
-package pimModule;
+package com.orangehrm.seleniumui.pim_module;
 
 import java.time.Duration;
 import java.util.List;

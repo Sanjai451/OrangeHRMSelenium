@@ -1,4 +1,4 @@
-package buzz;
+package com.orangehrm.seleniumui.buzz;
 
 import java.time.Duration;
 

@@ -1,4 +1,4 @@
-package recuritmentModule;
+package com.orangehrm.seleniumui.recuritment_module;
 
 import java.io.File;
 import java.time.Duration;
@@ -15,7 +15,11 @@ import org.testng.annotations.Test;
 public class AddRecruitments {
 	WebDriver driver = new EdgeDriver();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
+	String firstName = "ironman";
+	String middleName = "batman";
+	String lastName = "S";
+	String name = firstName + " " + middleName + " " + lastName;
+	
 	@Test(priority = 1)
 	public void login() {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -36,9 +40,9 @@ public class AddRecruitments {
 		driver.findElement(By.xpath("//button[contains(., 'Add')]")).click();
 		
 		// firstname
-		driver.findElement(By.name("firstName")).sendKeys("Spiderman");
-		driver.findElement(By.name("middleName")).sendKeys("Spider");
-		driver.findElement(By.name("lastName")).sendKeys("S");
+		driver.findElement(By.name("firstName")).sendKeys(firstName);
+		driver.findElement(By.name("middleName")).sendKeys(middleName);
+		driver.findElement(By.name("lastName")).sendKeys(lastName);
 		
 		WebElement vac = driver.findElement(By.xpath("//label[text()=\"Vacancy\"]/../../div[2]/div/div/div"));
 		
@@ -53,10 +57,24 @@ public class AddRecruitments {
 		
 		driver.findElement(By.xpath("//input[@type=\"file\"]")).sendKeys(filePath);
 		
-//		driver.findElement(By.xpath("//input[@placeholder=\"yyyy-dd-mm\"]")).sendKeys("2026-01-11");
+		WebElement dateInput = driver.findElement(By.xpath("//input[@placeholder=\"yyyy-dd-mm\"]"));
+		dateInput.sendKeys(Keys.CONTROL + "a");
+		dateInput.sendKeys(Keys.BACK_SPACE);
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+		}
+		dateInput.sendKeys("2025-11-11");
 		
 		driver.findElement(By.xpath("//button[contains(., 'Save')]")).click();
 		
+		WebElement disp = driver.findElement(By.xpath("//h6[.='Candidate Profile']"));
+		
+		
+//		try {
+//			Thread.sleep(12000);
+//		} catch (Exception e) {
+//		}
 
 	}
 	
@@ -65,10 +83,10 @@ public class AddRecruitments {
 		driver.findElement(By.xpath("//a[.='Candidates']")).click();
 		
 		driver.findElement(By.xpath("//label[text()='Candidate Name']/../..//input"))
-			.sendKeys("Spider");
+			.sendKeys(firstName);
 		
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (Exception e) {
 		}
 		
@@ -79,7 +97,7 @@ public class AddRecruitments {
 
 		WebElement result = wait.until(
 				ExpectedConditions.elementToBeClickable(
-						By.xpath("//div[@class=\"oxd-table-row oxd-table-row--with-border\"]//div[contains(., 'Spiderman Spider S')]")
+						By.xpath("//div[@class=\"oxd-table-row oxd-table-row--with-border\"]//div[contains(., '" + firstName + "')]")
 						)
 				);
 		if(result.isDisplayed()) {
@@ -93,9 +111,9 @@ public class AddRecruitments {
 	@Test(priority = 10)
 	public void logOutOrangeHRM() {
 
-//		driver.findElement(By.xpath("//img[@src=\"/web/index.php/pim/viewPhoto/empNumber/7\"]")).click();
-//
-//		driver.findElement(By.xpath("//a[@href=\"/web/index.php/auth/logout\"]")).click();
+		driver.findElement(By.xpath("//img[@src=\"/web/index.php/pim/viewPhoto/empNumber/7\"]")).click();
+
+		driver.findElement(By.xpath("//a[@href=\"/web/index.php/auth/logout\"]")).click();
 
 	}
 }

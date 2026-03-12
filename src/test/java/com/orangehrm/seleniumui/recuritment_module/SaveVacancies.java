@@ -1,4 +1,4 @@
-package recuritmentModule;
+package com.orangehrm.seleniumui.recuritment_module;
 
 import java.time.Duration;
 
@@ -54,10 +54,10 @@ public class SaveVacancies {
 		driver.findElement(By.tagName("textarea")).sendKeys("Freshers role");
 		
 		driver.findElement(By.xpath("//label[text()=\"Hiring Manager\"]/../..//input"))
-				.sendKeys("AB");
+				.sendKeys("a");
 		
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(4000);
 		} catch (Exception e) {
 		}
 		
@@ -68,6 +68,8 @@ public class SaveVacancies {
 				.sendKeys("3");
 		
 		driver.findElement(By.xpath("//button[contains(., 'Save')]")).click();
+		
+		WebElement disp = driver.findElement(By.xpath("//h6[.='Edit Vacancy']"));
 
 	}
 

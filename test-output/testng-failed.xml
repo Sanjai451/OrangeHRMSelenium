@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="buzz.BuzzTest">
+      <class name="com.orangehrm.seleniumui.recuritment_module.AddRecruitments">
         <methods>
-          <include name="performAction"/>
-          <include name="login"/>
+          <include name="verify"/>
         </methods>
-      </class> <!-- buzz.BuzzTest -->
+      </class> <!-- com.orangehrm.seleniumui.recuritment_module.AddRecruitments -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

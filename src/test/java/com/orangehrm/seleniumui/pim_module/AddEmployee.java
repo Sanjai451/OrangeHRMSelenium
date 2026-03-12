@@ -1,4 +1,4 @@
-package pimModule;
+package com.orangehrm.seleniumui.pim_module;
 
 import java.time.Duration;
 import java.util.List;
@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 
 public class AddEmployee {
 	WebDriver driver = new EdgeDriver();
+	String userName = "sanjai kumar r";
+	
 	@Test(priority = 1)
 	public void login() {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -50,11 +52,17 @@ public class AddEmployee {
 
 		toggle.click();
 		
-		driver.findElement(By.xpath("//label[text()=\"Username\"]/../..//input")).sendKeys("spiderman");
+		driver.findElement(By.xpath("//label[text()=\"Username\"]/../..//input")).sendKeys(userName);
 		driver.findElement(By.xpath("//label[text()=\"Password\"]/../..//input")).sendKeys("123456abcd");
 		driver.findElement(By.xpath("//label[text()=\"Confirm Password\"]/../..//input")).sendKeys("123456abcd");
 		
 		driver.findElement(By.cssSelector("[type=\"submit\"]")).click();
+		
+		if(driver.findElement(By.xpath("//h6[.='Sanjai R']")).isDisplayed()) {
+			System.out.println("Saved successfully");
+		}else {
+			System.out.println("Failed while saving data");
+		}
 		
 		
 	}
@@ -62,7 +70,7 @@ public class AddEmployee {
 	@Test(priority = 3)
 	public void verifyAddedData() {
 		driver.findElement(By.xpath("//a[@href=\"/web/index.php/admin/viewAdminModule\"]")).click();
-		driver.findElement(By.xpath("//label[text()=\"Username\"]/../..//input")).sendKeys("spiderman");
+		driver.findElement(By.xpath("//label[text()=\"Username\"]/../..//input")).sendKeys(userName);
 		
 		//selecting ESS Role
 //		WebElement role = driver.findElement(By.xpath("//label[text()=\"User Role\"]/../..//i"));
@@ -74,12 +82,16 @@ public class AddEmployee {
 		driver.findElement(By.xpath("//button[contains(., 'Search')]")).click();
 		
 		// verify user
-		List<WebElement> searchResults = driver.findElements(By.xpath("//div[@class=\"oxd-table-card\"]"));
+//		List<WebElement> searchResults = driver.findElements(By.xpath("//div[@class=\"oxd-table-card\"]"));
+		
+		List<WebElement> searchResults = driver.findElements(By.xpath("//div[@class=\"oxd-table-cell oxd-padding-cell\"]//div[.='" + userName + "']"));
+
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(4000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+
 		System.out.println(searchResults);
 		if(searchResults.size() >= 1) {
 			System.out.println("Data Added and verified successfully");
@@ -96,5 +108,6 @@ public class AddEmployee {
 		
 		driver.findElement(By.xpath("//a[@href=\"/web/index.php/auth/logout\"]")).click();	
 		
+		driver.quit();
 	}
 }
