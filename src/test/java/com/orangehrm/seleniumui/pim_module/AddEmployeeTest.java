@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class AddEmployee {
+public class AddEmployeeTest {
 	WebDriver driver = new EdgeDriver();
 	String userName = "sanjai kumar r";
 	

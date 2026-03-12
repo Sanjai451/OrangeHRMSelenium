@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class AddRecruitments {
+public class AddRecruitmentsTest {
 	WebDriver driver = new EdgeDriver();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	String firstName = "ironman";

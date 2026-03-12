@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class SaveVacancies {
+public class SaveVacanciesTest {
 	WebDriver driver = new EdgeDriver();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
